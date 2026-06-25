@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Reservas')}"></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+<div th:replace="~{fragments/layout :: navbar}"></div>
+
+<main class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="section-title m-0">Reservas de clases</h2>
+        <a class="btn btn-gradient" th:href="@{/reservas/nuevo}">Nueva reserva</a>
+    </div>
+
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle m-0">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Clase</th>
+                <th class="text-end">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="reserva : ${reservas}">
+                <td th:text="${reserva.id}"></td>
+                <td th:text="${reserva.nombreCliente}"></td>
+                <td th:text="${reserva.fecha}"></td>
+                <td th:text="${reserva.servicio.nombre}"></td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-outline-primary" th:href="@{/reservas/editar/{id}(id=${reserva.id})}">Editar</a>
+                    <a class="btn btn-sm btn-outline-danger" th:href="@{/reservas/eliminar/{id}(id=${reserva.id})}" onclick="return confirm('Desea eliminar esta reserva?');">Eliminar</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(reservas)}">
+                <td colspan="5" class="text-center py-4">No hay reservas registradas.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

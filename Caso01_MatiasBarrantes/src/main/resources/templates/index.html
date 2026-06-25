@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Inicio - Gym Fitness')}"></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+<div th:replace="~{fragments/layout :: navbar}"></div>
+
+<main class="container py-5">
+    <section class="row g-4 align-items-center mb-5">
+        <div class="col-lg-6">
+            <h2 class="section-title">Promocion de la semana</h2>
+            <p>Inscribete en nuestra clase destacada de <strong>HIIT Fusion 360</strong> y recibe una sesion de evaluacion fisica sin costo.</p>
+            <ul class="list-group list-group-flush rounded overflow-hidden">
+                <li class="list-group-item">Duracion: 45 minutos</li>
+                <li class="list-group-item">Intensidad: Media - Alta</li>
+                <li class="list-group-item">Horarios: Lunes, Miercoles y Viernes 6:00 PM</li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <div class="ratio ratio-16x9 rounded overflow-hidden border">
+                <iframe src="https://www.youtube.com/embed/UItWltVZZmE" title="Rutina de entrenamiento" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="row g-4">
+        <div class="col-md-4">
+            <article class="feature-card h-100">
+                <h3>Entrenadores Certificados</h3>
+                <p>Equipo profesional para guiar tu tecnica y progreso de forma segura.</p>
+            </article>
+        </div>
+        <div class="col-md-4">
+            <article class="feature-card h-100">
+                <h3>Planes Personalizados</h3>
+                <p>Adaptamos rutinas segun tus objetivos: salud, rendimiento o composicion corporal.</p>
+            </article>
+        </div>
+        <div class="col-md-4">
+            <article class="feature-card h-100">
+                <h3>Comunidad Activa</h3>
+                <p>Clases grupales y retos mensuales para mantener la motivacion al maximo.</p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

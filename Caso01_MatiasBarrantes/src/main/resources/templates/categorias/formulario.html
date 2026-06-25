@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Formulario de categoria')}"></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+<div th:replace="~{fragments/layout :: navbar}"></div>
+
+<main class="container py-5">
+    <div class="col-lg-6 mx-auto card p-4 shadow-sm">
+        <h2 class="section-title mb-4" th:text="${categoria.id == null} ? 'Nueva categoria' : 'Editar categoria'"></h2>
+
+        <form th:action="@{/categorias/guardar}" th:object="${categoria}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input id="nombre" type="text" th:field="*{nombre}" class="form-control" placeholder="Ej: Entrenamiento Funcional">
+                <div class="text-danger small mt-1" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-gradient">Guardar</button>
+                <a class="btn btn-outline-secondary" th:href="@{/categorias}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Contacto')}"></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+<div th:replace="~{fragments/layout :: navbar}"></div>
+
+<main class="container py-5">
+    <div class="col-lg-7 mx-auto card p-4 shadow-sm">
+        <h2 class="section-title mb-3">Quejas, sugerencias y consultas</h2>
+        <p class="text-muted">Completa el formulario y nuestro equipo se comunicara contigo.</p>
+
+        <div th:if="${mensajeExito}" class="alert alert-success" th:text="${mensajeExito}"></div>
+
+        <form th:action="@{/contacto}" th:object="${contactoForm}" method="post">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input id="nombre" type="text" class="form-control" th:field="*{nombre}">
+                <div class="text-danger small mt-1" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo electronico</label>
+                <input id="correo" type="email" class="form-control" th:field="*{correo}">
+                <div class="text-danger small mt-1" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea id="mensaje" class="form-control" rows="5" th:field="*{mensaje}"></textarea>
+                <div class="text-danger small mt-1" th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}"></div>
+            </div>
+
+            <button class="btn btn-gradient" type="submit">Enviar mensaje</button>
+        </form>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>
